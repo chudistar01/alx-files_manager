@@ -1,6 +1,6 @@
 import {ObjectId } from 'mongodb';
 import sha1 from 'sha1';
-import Queue fro 'bull';
+import Queue from 'bull';
 import dbClient from '../utils/db';
 
 const userQueue = new Queue('userQueue');
@@ -27,7 +27,7 @@ class UsersController {
 	try {
 	    result = await dbClient.usersCollection.insertOne({
 		email,
-		password: sha1Pssword,
+		password: sha1Password,
 	    });
 	} catch (err) {
 	    await userQueue.add({});
